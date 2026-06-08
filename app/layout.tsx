@@ -3,9 +3,9 @@ import "./globals.css";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://convoox.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://convoox.netlify.app"),
   title: {
-    default: "Convo0x — Free Online File Converter | Image to WebP, PDF, HEIC & More",
+    default: "Convoox — Free Online File Converter | Image to WebP, PDF, HEIC & More",
     template: "%s | convoox — Free File Converter",
   },
   description:
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_APP_URL || "https://convoox.com",
+    url: process.env.NEXT_PUBLIC_APP_URL || "https://convoox.netlify.app",
     siteName: "convoox",
     title: "convoox — Free Online File Converter | No Limits, No Watermarks",
     description:
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  alternates: { canonical: "https://convoox.com" },
+  alternates: { canonical: "https://convoox.netlify.app" },
 };
 
 export const viewport: Viewport = {
@@ -88,7 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@context": "https://schema.org",
               "@type": "WebApplication",
               name: "convoox",
-              url: process.env.NEXT_PUBLIC_APP_URL || "https://convoox.com",
+              url: process.env.NEXT_PUBLIC_APP_URL || "https://convoox.netlify.app",
               description:
                 "Free online file converter — convert images to WebP, JPG to PDF, HEIC to JPG, merge & compress PDFs.",
               applicationCategory: "UtilitiesApplication",

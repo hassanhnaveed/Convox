@@ -1,4 +1,4 @@
-# SwiftConvert
+# Convoox
 
 Free, unlimited, no-watermark file conversion tool.
 Built with Next.js 16, Sharp, Tailwind CSS v4, pdf-lib.
@@ -48,7 +48,7 @@ npm start
 ### With PM2
 ```bash
 npm install -g pm2
-pm2 start npm --name "swiftconvert" -- start
+pm2 start npm --name "Convoox" -- start
 pm2 save && pm2 startup
 ```
 

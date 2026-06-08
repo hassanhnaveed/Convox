@@ -1,6 +1,6 @@
 {
-  "name": "SwiftConvert",
-  "short_name": "SwiftConvert",
+  "name": "Convoox",
+  "short_name": "Convoox",
   "description": "Free online file converter — images, PDFs & more",
   "start_url": "/",
   "display": "standalone",

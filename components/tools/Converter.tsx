@@ -106,7 +106,7 @@ export function Converter({ tool }: ConverterProps) {
       const content = await zip.generateAsync({ type: "blob" });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(content);
-      a.download = `swiftconvert-${tool}.zip`;
+      a.download = `Convoox-${tool}.zip`;
       a.click();
     } catch { toast.error("Could not create ZIP"); }
   };

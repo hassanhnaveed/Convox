@@ -5,14 +5,14 @@ import { TOOL_CONFIG } from "@/lib/utils";
 import { Converter } from "@/components/tools/Converter";
 
 export const metadata: Metadata = {
-  title: "convoox — Free Image & PDF Converter Online | No Limits, No Watermarks",
+  title: "Convoox | Free File Converter Online",
   description:
     "convoox is a free online file converter. Convert images to WebP, JPG to PDF, HEIC to JPG, merge and compress PDFs. No signup, no watermarks, unlimited files. Fast and 100% private.",
-  alternates: { canonical: "https://convoox.com" },
+  alternates: { canonical: "https://convoox.netlify.app" },
   openGraph: {
     title: "convoox — Free Online File Converter | No Limits",
     description: "Convert images to WebP, merge PDFs and more. Free, no limits, no watermarks.",
-    url: "https://convoox.com",
+    url: "https://convoox.netlify.app",
   },
 };
 
