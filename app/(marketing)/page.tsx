@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Zap, Globe, Lock } from "lucide-react";
 import { TOOL_CONFIG } from "@/lib/utils";
-import { Converter } from "@/components/tools/Converter";
+// import { Converter } from "@/components/tools/Converter";
 
 export const metadata: Metadata = {
   title: "Convoox | Free File Converter Online",
@@ -86,9 +86,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div style={{ maxWidth: 800, margin: "0 auto" }}>
+          {/* <div style={{ maxWidth: 800, margin: "0 auto" }}>
             <Converter tool="image-to-webp" />
-          </div>
+          </div> */}
         </div>
       </section>
 
