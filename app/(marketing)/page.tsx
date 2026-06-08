@@ -5,14 +5,14 @@ import { TOOL_CONFIG } from "@/lib/utils";
 import { Converter } from "@/components/tools/Converter";
 
 export const metadata: Metadata = {
-  title: "Convox — Free Image & PDF Converter Online | No Limits, No Watermarks",
+  title: "convoox — Free Image & PDF Converter Online | No Limits, No Watermarks",
   description:
-    "Convox is a free online file converter. Convert images to WebP, JPG to PDF, HEIC to JPG, merge and compress PDFs. No signup, no watermarks, unlimited files. Fast and 100% private.",
-  alternates: { canonical: "https://convox.com" },
+    "convoox is a free online file converter. Convert images to WebP, JPG to PDF, HEIC to JPG, merge and compress PDFs. No signup, no watermarks, unlimited files. Fast and 100% private.",
+  alternates: { canonical: "https://convoox.com" },
   openGraph: {
-    title: "Convox — Free Online File Converter | No Limits",
+    title: "convoox — Free Online File Converter | No Limits",
     description: "Convert images to WebP, merge PDFs and more. Free, no limits, no watermarks.",
-    url: "https://convox.com",
+    url: "https://convoox.com",
   },
 };
 
@@ -26,12 +26,12 @@ const whyItems = [
 ];
 
 const faqs = [
-  { q: "Is Convox really free to use?", a: "Yes — all tools on Convox are completely free. No hidden fees, no credit card, no account required. Convert unlimited files." },
+  { q: "Is convoox really free to use?", a: "Yes — all tools on convoox are completely free. No hidden fees, no credit card, no account required. Convert unlimited files." },
   { q: "Are my files stored on your servers?", a: "No. Files are processed in memory and deleted immediately after conversion. We never store, share, or access your files." },
   { q: "What is WebP and why should I use it?", a: "WebP is a modern image format by Google that provides 25-80% smaller files vs JPG/PNG at equivalent quality — making websites load faster and improving SEO." },
   { q: "Do all browsers support WebP?", a: "Yes. Chrome, Firefox, Safari 14+, Edge, and Opera all support WebP. It has 97%+ global browser support as of 2024." },
   { q: "What is the maximum file size?", a: "50MB per file. You can convert up to 20 files at once and download them all as a ZIP archive." },
-  { q: "What image formats can I convert?", a: "Convox supports JPG, JPEG, PNG, GIF, BMP, TIFF, AVIF, HEIC, HEIF, and WebP as input formats depending on the tool." },
+  { q: "What image formats can I convert?", a: "convoox supports JPG, JPEG, PNG, GIF, BMP, TIFF, AVIF, HEIC, HEIF, and WebP as input formats depending on the tool." },
   { q: "Can I convert multiple files at once?", a: "Yes! Upload up to 20 files, convert them all with one click, and download as a single ZIP file." },
   { q: "How do I compress a PDF?", a: "Go to our PDF Compress tool, upload your PDF, click Convert, and download the compressed version. No quality loss on text and vector content." },
 ];
@@ -149,12 +149,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Convox */}
+      {/* Why convoox */}
       <section style={{ padding: "80px 24px", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)", borderBottom: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 800, letterSpacing: "-1.5px", color: "#fff", marginBottom: 12 }}>
-              Why Convox?
+              Why convoox?
             </h2>
             <p style={{ fontSize: 15, color: "var(--color-text-2)", maxWidth: 400, margin: "0 auto" }}>
               No paywalls. No limits. Just fast, private file conversion.
@@ -240,7 +240,7 @@ export default function HomePage() {
             Ready to convert?
           </h2>
           <p style={{ fontSize: 15, color: "var(--color-text-2)", marginBottom: 28 }}>
-            Join thousands of users who convert files with Convox every day — free, fast, private.
+            Join thousands of users who convert files with convoox every day — free, fast, private.
           </p>
           <Link href="/image-to-webp" className="btn-primary" style={{ fontSize: 16, padding: "14px 32px" }}>
             Start Converting Free <ArrowRight size={18} />

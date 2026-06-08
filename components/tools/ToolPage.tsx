@@ -13,20 +13,20 @@ export function ToolPage({ slug }: { slug: ToolSlug }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://convox.com" },
-      { "@type": "ListItem", position: 2, name: config.title, item: `https://convox.com/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://convoox.com" },
+      { "@type": "ListItem", position: 2, name: config.title, item: `https://convoox.com/${slug}` },
     ],
   };
 
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: `Convox ${config.title}`,
+    name: `convoox ${config.title}`,
     applicationCategory: "UtilitiesApplication",
     operatingSystem: "Web",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description: config.longDesc,
-    url: `https://convox.com/${slug}`,
+    url: `https://convoox.com/${slug}`,
   };
 
   return (
@@ -68,7 +68,7 @@ export function ToolPage({ slug }: { slug: ToolSlug }) {
             About {config.title}
           </h2>
           <p style={{ fontSize: 15, color: "var(--color-text-2)", lineHeight: 1.8 }}>
-            {config.longDesc} Convox makes {config.title.toLowerCase()} completely free — no registration, no watermarks, no file limits. All processing happens securely on our servers using Sharp, the industry-standard image processing library.
+            {config.longDesc} convoox makes {config.title.toLowerCase()} completely free — no registration, no watermarks, no file limits. All processing happens securely on our servers using Sharp, the industry-standard image processing library.
           </p>
         </div>
       </section>

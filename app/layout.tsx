@@ -3,13 +3,13 @@ import "./globals.css";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://convox.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://convoox.com"),
   title: {
-    default: "Convox — Free Online File Converter | Image to WebP, PDF, HEIC & More",
-    template: "%s | Convox — Free File Converter",
+    default: "Convo0x — Free Online File Converter | Image to WebP, PDF, HEIC & More",
+    template: "%s | convoox — Free File Converter",
   },
   description:
-    "Convox is a free online file converter. Convert images to WebP, JPG to PDF, HEIC to JPG, merge & compress PDFs. No signup, no watermarks, no limits. Fast & private.",
+    "convoox is a free online file converter. Convert images to WebP, JPG to PDF, HEIC to JPG, merge & compress PDFs. No signup, no watermarks, no limits. Fast & private.",
   keywords: [
     "free file converter",
     "image to webp converter",
@@ -26,25 +26,25 @@ export const metadata: Metadata = {
     "online file converter no watermark",
     "free image converter no signup",
     "bulk image converter",
-    "convox",
+    "convoox",
   ],
-  authors: [{ name: "Convox" }],
-  creator: "Convox",
-  publisher: "Convox",
+  authors: [{ name: "convoox" }],
+  creator: "convoox",
+  publisher: "convoox",
   category: "Technology",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_APP_URL || "https://convox.com",
-    siteName: "Convox",
-    title: "Convox — Free Online File Converter | No Limits, No Watermarks",
+    url: process.env.NEXT_PUBLIC_APP_URL || "https://convoox.com",
+    siteName: "convoox",
+    title: "convoox — Free Online File Converter | No Limits, No Watermarks",
     description:
       "Convert images to WebP, JPG to PDF, merge PDFs & more. 100% free, no signup required, no watermarks. Fast & private.",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Convox — Free File Converter" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "convoox — Free File Converter" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Convox — Free Online File Converter",
+    title: "convoox — Free Online File Converter",
     description: "Convert images & PDFs for free. No limits, no watermarks, no signup.",
     images: ["/og.png"],
   },
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  alternates: { canonical: "https://convox.com" },
+  alternates: { canonical: "https://convoox.com" },
 };
 
 export const viewport: Viewport = {
@@ -87,8 +87,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              name: "Convox",
-              url: process.env.NEXT_PUBLIC_APP_URL || "https://convox.com",
+              name: "convoox",
+              url: process.env.NEXT_PUBLIC_APP_URL || "https://convoox.com",
               description:
                 "Free online file converter — convert images to WebP, JPG to PDF, HEIC to JPG, merge & compress PDFs.",
               applicationCategory: "UtilitiesApplication",
