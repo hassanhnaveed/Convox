@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { Zap } from "lucide-react";
 import { TOOL_CONFIG } from "@/lib/utils";
@@ -15,11 +16,11 @@ export function Footer() {
                 <Zap size={14} color="#0A0F0D" strokeWidth={2.5} />
               </div>
               <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 15, color: "#fff" }}>
-                Swift<span style={{ color: "var(--color-brand)" }}>Convert</span>
+                Con<span style={{ color: "var(--color-brand)" }}>vox</span>
               </span>
             </Link>
             <p style={{ fontSize: 13, color: "var(--color-text-3)", lineHeight: 1.7, maxWidth: 220 }}>
-              Free, fast, and private file conversion. No limits. No watermarks.
+              Free, fast, and private file conversion. No limits. No watermarks. No signup.
             </p>
           </div>
 
@@ -27,9 +28,7 @@ export function Footer() {
             <p style={{ fontSize: 12, fontWeight: 700, color: "var(--color-text-3)", letterSpacing: "0.8px", textTransform: "uppercase", marginBottom: 14 }}>Image Tools</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {tools.filter(t => !t.slug.startsWith("pdf")).map(t => (
-                <Link key={t.slug} href={`/${t.slug}`} style={{ fontSize: 13, color: "var(--color-text-2)", textDecoration: "none" }}
-                  onMouseEnter={e => (e.currentTarget.style.color = "var(--color-brand)")}
-                  onMouseLeave={e => (e.currentTarget.style.color = "var(--color-text-2)")}>
+                <Link key={t.slug} href={`/${t.slug}`} style={{ fontSize: 13, color: "var(--color-text-2)", textDecoration: "none" }}>
                   {t.title}
                 </Link>
               ))}
@@ -40,9 +39,7 @@ export function Footer() {
             <p style={{ fontSize: 12, fontWeight: 700, color: "var(--color-text-3)", letterSpacing: "0.8px", textTransform: "uppercase", marginBottom: 14 }}>PDF Tools</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {tools.filter(t => t.slug.startsWith("pdf")).map(t => (
-                <Link key={t.slug} href={`/${t.slug}`} style={{ fontSize: 13, color: "var(--color-text-2)", textDecoration: "none" }}
-                  onMouseEnter={e => (e.currentTarget.style.color = "var(--color-brand)")}
-                  onMouseLeave={e => (e.currentTarget.style.color = "var(--color-text-2)")}>
+                <Link key={t.slug} href={`/${t.slug}`} style={{ fontSize: 13, color: "var(--color-text-2)", textDecoration: "none" }}>
                   {t.title}
                 </Link>
               ))}
@@ -60,7 +57,7 @@ export function Footer() {
 
         <div style={{ borderTop: "1px solid var(--color-border)", paddingTop: 24, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <p style={{ fontSize: 12, color: "var(--color-text-3)" }}>
-            © {new Date().getFullYear()} SwiftConvert. All rights reserved.
+            © {new Date().getFullYear()} Convox. All rights reserved.
           </p>
           <p style={{ fontSize: 12, color: "var(--color-text-3)" }}>
             Built with Next.js 16 · Powered by Sharp

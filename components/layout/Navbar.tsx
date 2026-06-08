@@ -22,7 +22,7 @@ export function Navbar() {
               <Zap size={16} color="#0A0F0D" strokeWidth={2.5} />
             </div>
             <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 17, color: "#fff", letterSpacing: "-0.5px" }}>
-              Swift<span style={{ color: "var(--color-brand)" }}>Convert</span>
+              Con<span style={{ color: "var(--color-brand)" }}>vox</span>
             </span>
           </Link>
 

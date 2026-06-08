@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   compress: true,
+poweredByHeader: false,
+generateEtags: true,
   async headers() {
     return [
       {
