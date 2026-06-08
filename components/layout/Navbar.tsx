@@ -1,0 +1,85 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { Menu, X, Zap } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { TOOL_CONFIG } from "@/lib/utils";
+
+const tools = Object.values(TOOL_CONFIG);
+
+export function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50" style={{ background: "rgba(17,19,24,0.85)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 60 }}>
+
+          {/* Logo */}
+          <Link href="/" style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none" }}>
+            <div style={{ width: 32, height: 32, borderRadius: 9, background: "var(--color-brand)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Zap size={16} color="#0A0F0D" strokeWidth={2.5} />
+            </div>
+            <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 17, color: "#fff", letterSpacing: "-0.5px" }}>
+              Swift<span style={{ color: "var(--color-brand)" }}>Convert</span>
+            </span>
+          </Link>
+
+          {/* Desktop nav */}
+          <nav style={{ display: "flex", alignItems: "center", gap: 32 }} className="hidden md:flex">
+            <Link href="/#tools" style={{ fontSize: 14, color: "var(--color-text-2)", textDecoration: "none", transition: "color 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "var(--color-text-1)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "var(--color-text-2)")}>
+              Tools
+            </Link>
+            <Link href="/#how-it-works" style={{ fontSize: 14, color: "var(--color-text-2)", textDecoration: "none", transition: "color 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "var(--color-text-1)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "var(--color-text-2)")}>
+              How it works
+            </Link>
+            <Link href="/#faq" style={{ fontSize: 14, color: "var(--color-text-2)", textDecoration: "none", transition: "color 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "var(--color-text-1)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "var(--color-text-2)")}>
+              FAQ
+            </Link>
+          </nav>
+
+          {/* CTA */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <Link href="/image-to-webp" className="btn-primary hidden md:inline-flex" style={{ fontSize: 13, padding: "8px 16px" }}>
+              Start Converting
+            </Link>
+            <button
+              className="md:hidden"
+              onClick={() => setOpen(!open)}
+              style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, padding: 8, cursor: "pointer", color: "var(--color-text-1)" }}>
+              {open ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            style={{ borderTop: "1px solid rgba(255,255,255,0.06)", background: "rgba(17,19,24,0.98)", overflow: "hidden" }}>
+            <div style={{ padding: "16px 24px", display: "flex", flexDirection: "column", gap: 4 }}>
+              {tools.map(t => (
+                <Link key={t.slug} href={`/${t.slug}`} onClick={() => setOpen(false)}
+                  style={{ fontSize: 14, color: "var(--color-text-2)", padding: "10px 0", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.04)", display: "flex", alignItems: "center", gap: 10 }}>
+                  <span>{t.icon}</span>
+                  {t.title}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
