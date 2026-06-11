@@ -13,13 +13,13 @@ import {
   Settings2,
   FileDown,
   ZapIcon,
-  ChevronDown,
 } from "lucide-react";
 import {
   formatBytes,
   getSavingsPct,
   type ToolSlug,
   TOOL_CONFIG,
+  FORMAT_OUTPUT_MAP,
 } from "@/lib/utils";
 import { toast } from "sonner";
 
@@ -30,6 +30,7 @@ interface FileItem {
   preview?: string;
   outputUrl?: string;
   outputSize?: number;
+  outputExt?: string; // for pdf-to-jpg to determine zip vs jpg
   error?: string;
 }
 
@@ -37,21 +38,6 @@ interface ConverterProps {
   tool: ToolSlug;
   onToolChange?: (tool: ToolSlug) => void;
 }
-
-// Smart format map — file type se valid output tools
-const FORMAT_MAP: Record<string, ToolSlug[]> = {
-  "image/jpeg": ["image-to-webp", "image-to-pdf"],
-  "image/jpg": ["image-to-webp", "image-to-pdf"],
-  "image/png": ["image-to-webp", "image-to-pdf"],
-  "image/gif": ["image-to-webp"],
-  "image/bmp": ["image-to-webp"],
-  "image/tiff": ["image-to-webp"],
-  "image/avif": ["image-to-webp"],
-  "image/webp": ["webp-to-jpg", "webp-to-png"],
-  "image/heic": ["heic-to-jpg"],
-  "image/heif": ["heic-to-jpg"],
-  "application/pdf": ["pdf-merge", "pdf-compress"],
-};
 
 const ALL_ACCEPT = {
   "image/jpeg": [".jpg", ".jpeg"],
@@ -91,7 +77,7 @@ export function Converter({ tool: initialTool, onToolChange }: ConverterProps) {
       // Detect file type and set available tools
       const firstFile = accepted[0];
       const mime = firstFile.type;
-      const validTools = FORMAT_MAP[mime] || [initialTool];
+      const validTools = FORMAT_OUTPUT_MAP[mime] || [initialTool];
 
       setAvailableTools(validTools);
       setSelectedTool(validTools[0]);
@@ -108,7 +94,7 @@ export function Converter({ tool: initialTool, onToolChange }: ConverterProps) {
       }));
       setFiles((prev) => [...prev, ...newItems]);
     },
-    [initialTool],
+    [initialTool, onToolChange],
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -145,10 +131,14 @@ export function Converter({ tool: initialTool, onToolChange }: ConverterProps) {
 
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
+      let outputExt: string | undefined;
+      if (selectedTool === "pdf-to-jpg") {
+        outputExt = blob.type.includes("zip") ? "-pages.zip" : ".jpg";
+      }
       setFiles((prev) =>
         prev.map((f) =>
           f.id === item.id
-            ? { ...f, status: "done", outputUrl: url, outputSize: blob.size }
+            ? { ...f, status: "done", outputUrl: url, outputSize: blob.size, outputExt }
             : f,
         ),
       );
@@ -166,14 +156,54 @@ export function Converter({ tool: initialTool, onToolChange }: ConverterProps) {
   const convertAll = () =>
     files.filter((f) => f.status === "idle").forEach(convertFile);
 
+  // const downloadFile = (item: FileItem) => {
+  //   if (!item.outputUrl) return;
+  //   const a = document.createElement("a");
+  //   a.href = item.outputUrl;
+
+  //   if (selectedTool === "pdf-to-jpg") {
+  //     // Single page → JPG, Multiple pages → ZIP
+  //     // Server already handles this — check content type
+  //     fetch(item.outputUrl, { method: "HEAD" }).then((res) => {
+  //       const contentType = res.headers.get("content-type") || "";
+  //       if (contentType.includes("zip")) {
+  //         a.download = item.file.name.replace(".pdf", "-pages.zip");
+  //       } else {
+  //         a.download = item.file.name.replace(".pdf", ".jpg");
+  //       }
+  //       document.body.appendChild(a);
+  //       a.click();
+  //       document.body.removeChild(a);
+  //     });
+  //     return;
+  //   }
+
+  //   a.download = item.file.name.replace(/\.[^.]+$/, config.outputExt);
+  //   document.body.appendChild(a);
+  //   a.click();
+  //   document.body.removeChild(a);
+  // };
+  // ✅ NAYA - YE LAGAO
   const downloadFile = (item: FileItem) => {
     if (!item.outputUrl) return;
+
     const a = document.createElement("a");
     a.href = item.outputUrl;
-    a.download = item.file.name.replace(/\.[^.]+$/, config.outputExt);
-    a.click();
-  };
 
+    // Blob ka content type directly item se track karo — no fetch needed
+    if (selectedTool === "pdf-to-jpg") {
+      // outputSize se zip ya jpg ka pata nahi chalta
+      // isliye hum blob ko check karte hain jo already store hai
+      const ext = item.outputExt ?? ".jpg"; // fallback jpg
+      a.download = item.file.name.replace(".pdf", ext);
+    } else {
+      a.download = item.file.name.replace(/\.[^.]+$/, config.outputExt);
+    }
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
   const downloadAll = async () => {
     const done = files.filter((f) => f.status === "done" && f.outputUrl);
     if (done.length === 0) return;
@@ -230,33 +260,6 @@ export function Converter({ tool: initialTool, onToolChange }: ConverterProps) {
             exit={{ opacity: 0, y: -10 }}
             style={{ marginBottom: 16 }}
           >
-            {/* <div className="card" style={{ padding: "16px 20px" }}>
-              <p style={{ fontSize: 13, color: "var(--color-text-3)", marginBottom: 10 }}>
-                Convert to:
-              </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {availableTools.map(t => {
-                  const tc = TOOL_CONFIG[t];
-                  return (
-                    <button
-                      key={t}
-                      onClick={() => setSelectedTool(t)}
-                      style={{
-                        display: "flex", alignItems: "center", gap: 8,
-                        padding: "8px 16px", borderRadius: 10, cursor: "pointer",
-                        border: selectedTool === t ? "1px solid var(--color-brand)" : "1px solid var(--color-border)",
-                        background: selectedTool === t ? "rgba(0,208,132,0.1)" : "var(--color-bg-3)",
-                        color: selectedTool === t ? "var(--color-brand)" : "var(--color-text-2)",
-                        fontSize: 13, fontWeight: 600, transition: "all 0.15s",
-                      }}
-                    >
-                      <span>{tc.icon}</span>
-                      {tc.title}
-                    </button>
-                  );
-                })}
-              </div>
-            </div> */}
             <div
               style={{
                 display: "flex",
