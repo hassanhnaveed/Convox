@@ -7,9 +7,9 @@ import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 
 export function ToolPage({ slug }: { slug: ToolSlug }) {
-  const [activeTool, setActiveTool] = useState(slug);
+  const [activeTool, setActiveTool] = useState<ToolSlug>(slug);
   const config = TOOL_CONFIG[activeTool];
-  const otherTools = Object.values(TOOL_CONFIG).filter((t) => t.slug !== slug);
+  const otherTools = Object.values(TOOL_CONFIG).filter((t) => t.slug !== activeTool);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -127,7 +127,6 @@ export function ToolPage({ slug }: { slug: ToolSlug }) {
               >
                 {config.title}
               </h1>
-
               <p
                 style={{
                   fontSize: 16,
@@ -141,7 +140,8 @@ export function ToolPage({ slug }: { slug: ToolSlug }) {
             </div>
           </div>
 
-          <Converter tool={slug} onToolChange={setActiveTool} />
+          {/* <Converter tool={slug} onToolChange={setActiveTool} /> */}
+          <Converter tool={activeTool} onToolChange={(t) => setActiveTool(t)} />
         </div>
       </section>
 
@@ -218,3 +218,4 @@ export function ToolPage({ slug }: { slug: ToolSlug }) {
     </>
   );
 }
+

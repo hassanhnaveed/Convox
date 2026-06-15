@@ -138,7 +138,13 @@ export function Converter({ tool: initialTool, onToolChange }: ConverterProps) {
       setFiles((prev) =>
         prev.map((f) =>
           f.id === item.id
-            ? { ...f, status: "done", outputUrl: url, outputSize: blob.size, outputExt }
+            ? {
+                ...f,
+                status: "done",
+                outputUrl: url,
+                outputSize: blob.size,
+                outputExt,
+              }
             : f,
         ),
       );
