@@ -294,6 +294,25 @@ export const TOOL_CONFIG = {
     icon: "🖼️",
     color: "#F59E0B",
   },
+  "pdf-split": {
+    slug: "pdf-split",
+    title: "PDF Split",
+    description: "Split a PDF into separate pages or page ranges",
+    longDesc:
+      "Split any PDF into individual pages or custom page ranges. Extract exactly the pages you need and download them as separate PDF files. Free, unlimited, no signup.",
+    keywords: [
+      "split pdf online free",
+      "pdf splitter",
+      "extract pdf pages",
+      "separate pdf pages",
+      "pdf page extractor",
+    ],
+    accept: { "application/pdf": [".pdf"] },
+    outputExt: ".pdf",
+    outputMime: "application/pdf",
+    icon: "✂️",
+    color: "#F59E0B",
+  },
   "image-enhance": {
     slug: "image-enhance",
     title: "Image Enhancer",
