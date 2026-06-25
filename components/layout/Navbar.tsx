@@ -71,7 +71,7 @@ export function Navbar() {
             className="hidden md:flex"
           >
             <Link
-              href="/#tools"
+              href="/convoox#tools"
               style={{
                 fontSize: 14,
                 color: "var(--color-text-2)",
@@ -88,7 +88,7 @@ export function Navbar() {
               Tools
             </Link>
             <Link
-              href="/#how-it-works"
+              href="/convoox#how-it-works"
               style={{
                 fontSize: 14,
                 color: "var(--color-text-2)",
@@ -105,7 +105,7 @@ export function Navbar() {
               How it works
             </Link>
             <Link
-              href="/#faq"
+              href="/convoox#faq"
               style={{
                 fontSize: 14,
                 color: "var(--color-text-2)",
