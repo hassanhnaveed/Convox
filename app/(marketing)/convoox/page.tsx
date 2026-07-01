@@ -642,7 +642,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Zap, Globe, Lock } from "lucide-react";
+import { ShieldCheck, Zap, Globe, Lock } from "lucide-react";
 import { TOOL_CONFIG, type ToolSlug } from "@/lib/utils";
 import { useState } from "react";
 import { SmartUploadWidget } from "@/components/tools/SmartUploadWidget";
@@ -1307,47 +1307,6 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Bottom CTA */}
-      <section
-        style={{
-          padding: "80px 24px",
-          borderTop: "1px solid var(--color-border)",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ maxWidth: 600, margin: "0 auto" }}>
-          <h2
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(26px, 4vw, 40px)",
-              fontWeight: 800,
-              letterSpacing: "-1.5px",
-              color: "#fff",
-              marginBottom: 16,
-            }}
-          >
-            Ready to convert?
-          </h2>
-          <p
-            style={{
-              fontSize: 15,
-              color: "var(--color-text-2)",
-              marginBottom: 28,
-            }}
-          >
-            Join thousands of users who convert files with Convoox every day —
-            free, fast, private.
-          </p>
-          <Link
-            href="#"
-            className="btn-primary"
-            style={{ fontSize: 16, padding: "14px 32px" }}
-          >
-            Select a File <ArrowRight size={18} />
-          </Link>
         </div>
       </section>
 
